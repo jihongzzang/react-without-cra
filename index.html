@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>React App Without CRA</title>
+    <!-- 리액트 관련 cdn -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- 바벨 관련 cdn -->
+    <!-- <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      //   const App = () => <h1>Hello World</h1>;
-
-      //   const root = ReactDOM.createRoot(document.getElementById('root'));
-
-      //   root.render(
-      //       <React.StrictMode>
-      //         <App />
-      //         </React.StrictMode>
-      //     );
-
-      const App = () => React.createElement('h1', null, 'HELLO REACT WORLD');
-
-      ReactDOM.render(React.createElement(App), document.getElementById('root'));
-    </script>
+    <script src="dist/app.js"></script>
+    <!--
+      - 스크립트 변환을 알려주어야함 => type='"text/babel'
+      - You are using the in-browser Babel transformer. Be sure to precompile your scripts for production
+      - 이렇게 하더라도 위와같은 오류가 난다. 여기서 필요한게 webpack
+      
+      <script type="text/babel">
+        const App = () => <h1>Hello World</h1>;
+        ReactDOM.render(React.createElement(App), document.getElementById('root'));
+      </script>
+    -->
   </body>
 </html>
