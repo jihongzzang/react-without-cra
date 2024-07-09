@@ -10,15 +10,19 @@
   <body>
     <div id="root"></div>
     <script>
-      const App = () => <h1>Hello World</h1>;
+      //   const App = () => <h1>Hello World</h1>;
 
-      const root = ReactDOM.createRoot(document.getElementById('root'));
+      //   const root = ReactDOM.createRoot(document.getElementById('root'));
 
-      root.render(
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      );
+      //   root.render(
+      //       <React.StrictMode>
+      //         <App />
+      //         </React.StrictMode>
+      //     );
+
+      const App = () => React.createElement('h1', null, 'HELLO REACT WORLD');
+
+      ReactDOM.render(React.createElement(App), document.getElementById('root'));
     </script>
   </body>
 </html>
