@@ -64,3 +64,39 @@ package.json 수정
 
 
 ```
+
+## 계산기를 한번 만들어보자
+
+```js
+// src/utils를 만들어주고 더하기, 뺄셈, 곱하기, 나누기 함수를 나누어보자.
+
+// app.js에서 import 해주고 밖에서 함수들을 사용하자.
+
+// build 하면 아마 es 모듈이 아니라, 임포트 할 수 없다고 나옴
+
+// script tag type 'module' 이라고 정의 해주자.
+
+// 근데 문제는 스크립트를 너무 많이 받아온다.
+
+// HTTP 요청에는 서버와의 요청, 응답 시간 뿐만 아니라 TCP, DNS 조회 등등 부가적인 시간도 소요
+
+// 브라우저는 한 도메인 당 한번에 요청할 수 있는 Connection을 최대 6개로 제한함.
+
+// 이 과정에서 하나로 합치는 번들링필요.
+```
+
+```zsh
+$npm install --save-dev webpack webpack-cli
+
+$npm install --save-dev babel-loader
+
+$mkdir webpack.config.js
+```
+
+```text
+=> (설정 세팅)
+
+in package.json
+
+"build": "babel src --out-dir dist" => "build": "webpack" 수정
+```
