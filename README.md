@@ -100,3 +100,37 @@ in package.json
 
 "build": "babel src --out-dir dist" => "build": "webpack" 수정
 ```
+
+```text
+webpack.config.js
+
+production : 코드 최적화 과정(트리 쉐이킹, 코드 스플리팅, 코드 난독화)이 자동으로 이루어짐.
+
+development : 코드 최적화 과정이 자동으로 이루어지지 않음.
+```
+
+```zsh
+$npm install --save-dev html-webpack-plugin
+
+// 번들링과정에서 도움을 줌.
+```
+
+```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.export = {
+  //...rest,
+
+  // Plugin: 빌드 프로세스의 특정 시점에 후킹되어 추가 기능을 수행하는 확장 모듈.
+  // [Webpackplugins 사이트](https://webpack.js.org/plugins/)
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: '/index.html',
+      filename: 'index.html',
+    }),
+  ],
+};
+
+//추가
+```
