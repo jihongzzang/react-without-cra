@@ -134,3 +134,70 @@ module.export = {
 
 //추가
 ```
+
+````text
+현재 과정에서는 빌드전 이전빌드의 결과물이 남아 있지 않도록 dist 파일을 삭제했었는데.
+
+이과정을 자동화 해보자.
+
+```zshrc
+$npm install --save-dev clean-webpack-plugin
+````
+
+```js
+// in webpack.config.js
+
+// add new CleanWebpackPlugin()
+```
+
+webpack 개발서버 설정하기.
+
+```zshrc
+$npm install --save-dev webpack-dev-server
+```
+
+```js
+// in webpack.config.js
+
+// devServer: {
+//     static: { directory: path.join(__dirname, 'dist') },
+//     port: 9000,
+//     open: true,
+//   },
+
+// in package.json
+
+// "start": "webpack serve"
+```
+
+환경변수 처리하기
+
+```zshrc
+$npm install --save-dev dotenv-webpack
+```
+
+```js
+// in package.json
+
+// "start": "NODE_ENV=dev webpack serve"
+
+// in webpack.config.js
+
+// const buildMode = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
+
+// mode: buildMode,
+
+// new DotenvWebpack({ path: `./.env.${process.env.NODE_ENV || 'dev'}` }),
+```
+
+개발환경의 크로스 이슈를 해결해기 위해
+
+```zshrc
+$npm install --save-dev cross-env
+```
+
+```js
+// in package.json
+
+// "start": "NODE_ENV=dev webpack serve"
+```

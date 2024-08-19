@@ -1,5 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DotenvWebpack = require('dotenv-webpack');
+
+const buildMode = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
 
 module.exports = {
   /** 번들링의 시작지점 */
@@ -23,13 +27,22 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
+  mode: buildMode,
   plugins: [
+    //왠만하면 앞쪽에 배치하도록
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: '/index.html',
       filename: 'index.html',
     }),
+    new DotenvWebpack({ path: `./.env.${process.env.NODE_ENV || 'dev'}` }),
   ],
+
+  devServer: {
+    static: { directory: path.join(__dirname, 'dist') },
+    port: 9000,
+    open: true,
+  },
 
   // asset bundle.js 6.72 KiB [emitted] (name: main)
 
